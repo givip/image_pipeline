@@ -203,7 +203,7 @@ int main(int argc, char **argv)
   }
   ROS_INFO_STREAM("Using transport \"" << transport << "\"");
   image_transport::ImageTransport it(nh);
-  image_transport::TransportHints hints(transport, ros::TransportHints(), local_nh);
+  image_transport::TransportHints hints(transport, ros::TransportHints().udp(), local_nh);
   image_transport::Subscriber sub = it.subscribe(topic, 1, imageCb, hints);
   g_pub = local_nh.advertise<sensor_msgs::Image>("output", 1);
 

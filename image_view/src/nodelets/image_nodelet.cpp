@@ -174,7 +174,7 @@ void ImageNodelet::onInit()
   window_thread_ = boost::thread(&ImageNodelet::windowThread, this);
 
   image_transport::ImageTransport it(nh);
-  image_transport::TransportHints hints(transport, ros::TransportHints(), getPrivateNodeHandle());
+  image_transport::TransportHints hints(transport, ros::TransportHints().udp(), getPrivateNodeHandle());
   sub_ = it.subscribe(topic, 1, &ImageNodelet::imageCb, this, hints);
 }
 
